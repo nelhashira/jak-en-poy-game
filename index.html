@@ -6,15 +6,47 @@
       <title>Document</title>
 
       <!-- Fontawesome icons -->
-      <script
+      <!-- <script
          src="https://kit.fontawesome.com/c8c47f29f6.js"
          crossorigin="anonymous"
-      ></script>
+      ></script> -->
+      <link rel="stylesheet" href="css/fontawesome.min.css" />
       <!-- My Stylesheet -->
       <link rel="stylesheet" href="css/style.css" />
    </head>
    <body>
-      <div class="container"></div>
+      <div class="container">
+         <h1>Jack-en-Poy</h1>
+         <button type="button" class="btn" id="random-btn">Start</button>
+         <button type="button" class="btn" id="reset-btn">Reset</button>
+         <!-- Icon section -->
+         <div class="weapon-wrap">
+            <div class="weapon-left">
+               <i class="far" id="player1-box"></i>
+            </div>
+            <div class="weapon-right">
+               <i class="far" id="player2-box"></i>
+            </div>
+         </div>
+         <!-- Score section -->
+         <h3>Score:</h3>
+         <div class="score-wrap">
+            <div class="score-1 score">
+               <span>Player 1</span>
+               <div id="player1-score">0</div>
+            </div>
+            <div class="score-2 score">
+               <span>Player 2</span>
+               <div id="player2-score">0</div>
+            </div>
+         </div>
+      </div>
+      <!-- Congratulations -->
+      <div class="congrats" id="congrats-box">
+         <i class="fa fa-times" aria-hidden="true" id="close-modal"></i>
+         <h1>Congratulations</h1>
+         <p><span id="player-name"></span> Wins</p>
+      </div>
       <!-- My script -->
       <script src="js/app.js"></script>
    </body>

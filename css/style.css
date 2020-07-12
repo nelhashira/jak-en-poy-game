@@ -1,0 +1,105 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+body {
+   font-family: Monserrat, sans-serif;
+   line-height: 1.6;
+   font-size: 1.1rem;
+   color: #2d3436;
+   text-align: center;
+}
+
+.container {
+   margin: 5rem auto;
+   background-color: #ecf0f1;
+   padding-bottom: 1.5rem;
+   max-width: 1000px;
+}
+
+h1 {
+   margin: 1rem;
+}
+
+h3 {
+   margin-top: 1.5rem;
+}
+
+.btn {
+   margin: 0 0.75rem;
+   padding: 0.5rem 1.75rem;
+   border: none;
+   outline: none;
+   background-color: #2d3436;
+   border-radius: 5px;
+   color: #fff;
+   font-size: 1.2rem;
+   cursor: pointer;
+}
+
+.score-wrap {
+   font-size: 1.5rem;
+   margin-top: 1rem;
+   display: flex;
+   justify-content: center;
+}
+
+.score-wrap > div {
+   margin: 0 3.75rem;
+}
+
+.score-wrap .score > div {
+   background-color: #2d3436;
+   color: #fff;
+   margin: 0 auto;
+   max-width: 50px;
+   display: inline;
+   padding: 1rem;
+}
+
+span {
+   font-weight: bold;
+   margin-right: 0.75rem;
+}
+
+.weapon-wrap {
+   margin-top: 2rem;
+   margin-left: auto;
+   margin-right: auto;
+   max-width: 550px;
+   font-size: 8rem;
+   display: flex;
+}
+
+.weapon-wrap > div {
+   flex: 1 1 200px;
+   margin: 0 1.75rem;
+   border: 1px solid #2d3436;
+   border-radius: 5px;
+}
+
+.congrats {
+   display: none;
+   padding: 8rem 15rem;
+   background-color: #74b9ff;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   z-index: 12;
+}
+
+.congrats h1 {
+   margin-bottom: 2rem;
+}
+
+.congrats i {
+   position: absolute;
+   top: 1.5rem;
+   right: 2rem;
+   font-size: 2rem;
+   color: #e74c3c;
+   cursor: pointer;
+}
