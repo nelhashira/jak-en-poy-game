@@ -18,12 +18,10 @@ h2 {
 .container {
    color: #ecf0f1;
    text-align: center;
-   width: 100%;
    margin-left: auto;
    margin-right: auto;
    padding-left: 15px;
    padding-right: 15px;
-   /* background-image: url("../img/mother-and-son-playing-rock-paper-scissors-game-4472822\ \(1\).jpg"); */
    background-image: url("https://images.pexels.com/photos/4472822/pexels-photo-4472822.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
    background-size: cover;
    background-repeat: no-repeat;
