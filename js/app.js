@@ -30,13 +30,13 @@ const p1WeaponName = document.querySelector("#my-pick");
 // Enemy Pick Weapon
 const p2WeaponName = document.querySelector("#enemy-pick");
 
-// FUnction Start
+// Function Start
 function startGame() {
    greet.style.display = "none";
    prompt.classList.add("show-prompt");
 }
 
-// Reset Function
+// Reload Function
 function resetValues() {
    location.reload();
    return false;
@@ -114,14 +114,14 @@ icons.forEach((icon) => {
       p2WeaponName.textContent = sliceText(enemyWeapons);
 
       // Scores
-      player1.value = myScore;
-      player2.value = aiScore;
+      player1.textContent = myScore;
+      player2.textContent = aiScore;
 
-      if (player1.value === "10") {
+      if (player1.textContent === "10") {
          document.querySelector("#winner-name").textContent = playerName.value;
          greet.style.display = "block";
       }
-      if (player2.value === "10") {
+      if (player2.textContent === "10") {
          document.querySelector("#winner-name").textContent = "Computer";
          greet.style.display = "block";
       }
