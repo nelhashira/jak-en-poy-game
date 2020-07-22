@@ -10,43 +10,74 @@
          src="https://kit.fontawesome.com/c8c47f29f6.js"
          crossorigin="anonymous"
       ></script>
+
       <!-- My Stylesheet -->
       <link rel="stylesheet" href="css/style.css" />
    </head>
    <body>
+      <!-- Main container -->
       <div class="container">
-         <h1>Jack-en-Poy</h1>
-         <button type="button" class="btn" id="random-btn">Start</button>
-         <button type="button" class="btn" id="reset-btn">Reset</button>
-         <!-- Icon section -->
-         <div class="weapon-wrap">
-            <div class="weapon-left">
-               <i class="far" id="player1-box"></i>
+         <!-- Heading Container -->
+         <div class="heading-container">
+            <h1>Rock-Paper-Scissors Game</h1>
+         </div>
+         <div id="score" class="score-sheets">
+            <div class="player1 player">
+               <span>Player 1</span
+               ><input type="text" disabled id="player-1" value="0" />
             </div>
-            <div class="weapon-right">
-               <i class="far" id="player2-box"></i>
+            <div class="palyer-2 player">
+               <span>Computer</span
+               ><input type="text" disabled id="player-2" value="0" />
             </div>
          </div>
-         <!-- Score section -->
-         <h3>Score:</h3>
-         <div class="score-wrap">
-            <div class="score-1 score">
-               <span>Player 1</span>
-               <div id="player1-score">0</div>
+         <!-- Start button -->
+         <button id="play" class="play-btn">Start</button>
+
+         <!-- Display prompt -->
+         <div id="prompt" class="prompt-container">
+            <button id="close" class="close-btn">
+               <i class="fa fa-times"></i>
+            </button>
+            <h2>Enter player's name</h2>
+            <form action="" id="form" class="submitted">
+               <input type="text" name="username" id="username" />
+               <p id="input-warning" class="warning">
+                  Player name must not be empty !
+               </p>
+               <input type="submit" value="Submit" />
+            </form>
+         </div>
+
+         <!-- Weapon Container -->
+         <div id="weapon" class="weapon-main">
+            <h2>Pick your weapon</h2>
+            <div class="weapon-container">
+               <button class="icon">
+                  <i class="far fa-hand-rock"></i>
+               </button>
+
+               <button class="icon">
+                  <i class="far fa-hand-scissors"></i>
+               </button>
+
+               <button class="icon">
+                  <i class="far fa-hand-paper"></i>
+               </button>
             </div>
-            <div class="score-2 score">
-               <span>Player 2</span>
-               <div id="player2-score">0</div>
+            <div class="pick-info">
+               <p>Your pick: <span id="my-pick"></span></p>
+               <p>Enemy pick: <span id="enemy-pick"></span></p>
             </div>
          </div>
+
+         <!-- WInner Prompt -->
+         <div id="greet" class="greet-box">
+            <h2>Congratulations</h2>
+            <p>Winner : <span id="winner-name"></span></p>
+            <button id="again">Play Again</button>
+         </div>
       </div>
-      <!-- Congratulations -->
-      <div class="congrats" id="congrats-box">
-         <i class="fa fa-times" aria-hidden="true" id="close-modal"></i>
-         <h1>Congratulations</h1>
-         <p><span id="player-name"></span> Wins</p>
-      </div>
-      <!-- My script -->
       <script src="js/app.js"></script>
    </body>
 </html>

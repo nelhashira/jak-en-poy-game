@@ -1,115 +1,136 @@
-// Button (random generator)
-const randBtn = document.querySelector("#random-btn");
-// Reset Button
-const resetBtn = document.querySelector("#reset-btn");
-
+// Weapon container
+const weapon = document.querySelector("#weapon");
+// Play button
+const startBtn = document.querySelector("#play");
+// Prompt container
+const prompt = document.querySelector("#prompt");
+// Icon button (weapons)
+const icons = document.querySelectorAll(".icon");
+// CLose button
+const closeBtn = document.querySelector("#close");
+// Submit button
+const form = document.querySelector("#form");
+// Player's name
+const playerName = document.querySelector("#username");
+// Warning message
+const warning = document.querySelector("#input-warning");
 // Score sheets
-const p1ScoreSheet = document.querySelector("#player1-score");
-const p2ScoreSheet = document.querySelector("#player2-score");
+const score = document.querySelector("#score");
+// Player 1 Score
+const player1 = document.querySelector("#player-1");
+// Player 2 Score
+const player2 = document.querySelector("#player-2");
+// Greetings Box
+const greet = document.querySelector("#greet");
+// PlayAGain button
+const playAgain = document.querySelector("#again");
 
-// Icon box
-const p1Icon = document.querySelector("#player1-box");
-const p2Icon = document.querySelector("#player2-box");
+// My Pick weapon
+const p1WeaponName = document.querySelector("#my-pick");
+// Enemy Pick Weapon
+const p2WeaponName = document.querySelector("#enemy-pick");
 
-// COngrats box
-const modal = document.querySelector("#congrats-box");
-const playerName = document.querySelector("#player-name");
-
-// Objects
-const weapon = [
-   {
-      iconClass: "fa-hand-rock",
-   },
-   {
-      iconClass: "fa-hand-scissors",
-   },
-   {
-      iconClass: "fa-hand-paper",
-   },
-];
-
-// CLose modal
-document.querySelector("#close-modal").addEventListener("click", function () {
-   modal.style.display = "none";
-});
-
-// Reset values
-resetBtn.addEventListener("click", function () {
-   document.location.reload();
-});
-
-// Return random number (0-2)
-const randomGenerator = () => Math.floor(Math.random() * weapon.length);
-
-// Player 1
-function playerOne() {
-   let i = randomGenerator();
-   return weapon[i];
+// FUnction Start
+function startGame() {
+   greet.style.display = "none";
+   prompt.classList.add("show-prompt");
 }
 
-// Player 2
-function playerTwo() {
-   let i = randomGenerator();
-   return weapon[i];
+// Reset Function
+function resetValues() {
+   location.reload();
+   return false;
 }
 
-let p1Score = 0;
-let p2Score = 0;
+// Display prompt
+startBtn.addEventListener("click", startGame);
 
-randBtn.addEventListener("click", function (e) {
-   if (p1ScoreSheet.innerHTML >= 10 || p2ScoreSheet.innerHTML >= 10) {
-      if (confirm("Would you like to reset the game?")) {
-         document.location.reload();
-      }
-   }
-   // Player 1
-   let p1 = playerOne();
-   let temp1 = weaponGenerator(p1, p1Icon).split(" ");
-   let p1Weapon = temp1[temp1.length - 1];
+// Play AGain
+playAgain.addEventListener("click", startGame);
 
-   // // Player 2
-   let p2 = playerTwo();
-   let temp2 = weaponGenerator(p2, p2Icon).split(" ");
-   let p2Weapon = temp2[temp2.length - 1];
+// Close Prompt
+closeBtn.addEventListener("click", () => {
+   prompt.classList.remove("show-prompt");
+});
 
-   // Battle Begins
-   if (
-      (p1Weapon === "fa-hand-rock" && p2Weapon === "fa-hand-scissors") ||
-      (p1Weapon === "fa-hand-paper" && p2Weapon === "fa-hand-rock") ||
-      (p1Weapon === "fa-hand-scissors" && p2Weapon === "fa-hand-paper")
-   ) {
-      p1Score++;
-   } else if (p1Weapon === p2Weapon) {
-      p1Score += 0;
-      p2Score += 0;
-   } else {
-      p2Score++;
-   }
+// Submit player name
+form.addEventListener("submit", (e) => {
+   e.preventDefault();
 
-   // Scoresheet
-   p1ScoreSheet.innerHTML = p1Score;
-   p2ScoreSheet.innerHTML = p2Score;
-
-   if (p1ScoreSheet.innerHTML == 10 || p2ScoreSheet.innerHTML == 10) {
-      modal.style.display = "block";
-      if (p1ScoreSheet.innerHTML == 10) {
-         playerName.innerHTML = "Player 1";
+   // If submitted
+   if (e.target.classList.contains("submitted")) {
+      if (playerName.value === "") {
+         warning.style.visibility = "visible";
       } else {
-         playerName.innerHTML = "Player 2";
+         player = playerName.value;
+         // Remove prompt
+         prompt.classList.remove("show-prompt");
+         // Remove button
+         startBtn.style.display = "none";
+         // Display weapon
+         weapon.style.display = "block";
+         // Display scoresheets
+         score.style.display = "flex";
       }
+   } else {
+      console.log(e.target.nodeName);
    }
 });
 
-// Remove class attribute
-p1Icon.removeAttribute("class");
+// Initial Score
+let myScore = 0;
+let aiScore = 0;
 
-// Generate class icon
-function weaponGenerator(player, icon) {
-   let newClassArr = [];
-   newClassArr.push("far");
-   if (newClassArr.length === 1) {
-      newClassArr.push(player.iconClass);
-   }
-   icon.className = "";
-   return (icon.className += newClassArr.join(" "));
+// My enemy (ai) weapon - randomized
+function enemyWeapon() {
+   const weaponList = ["fa-hand-rock", "fa-hand-scissors", "fa-hand-paper"];
+   const index = Math.floor(Math.random() * weaponList.length);
+   return weaponList[index];
+}
+
+// Choose weapon (add click event)
+icons.forEach((icon) => {
+   icon.addEventListener("click", (e) => {
+      // Enemy weapon
+      const enemyWeapons = enemyWeapon();
+      // Your choosen weapon
+      const myWeapon = e.target.classList[1];
+      //
+      if (
+         (myWeapon === "fa-hand-rock" && enemyWeapons === "fa-hand-scissors") ||
+         (myWeapon === "fa-hand-paper" && enemyWeapons === "fa-hand-rock") ||
+         (myWeapon === "fa-hand-scissors" && enemyWeapons === "fa-hand-paper")
+      ) {
+         myScore++;
+      } else if (myWeapon === enemyWeapons) {
+         myScore += 0;
+         aiScore += 0;
+      } else {
+         aiScore++;
+      }
+
+      // Pick info
+      p1WeaponName.textContent = sliceText(myWeapon);
+      p2WeaponName.textContent = sliceText(enemyWeapons);
+
+      // Scores
+      player1.value = myScore;
+      player2.value = aiScore;
+
+      if (player1.value === "10") {
+         document.querySelector("#winner-name").textContent = playerName.value;
+         greet.style.display = "block";
+         resetValues();
+      }
+      if (player2.value === "10") {
+         document.querySelector("#winner-name").textContent = "Computer";
+         greet.style.display = "block";
+         resetValues();
+      }
+   });
+});
+
+function sliceText(text) {
+   let str = text.toUpperCase();
+   return str.slice(str.lastIndexOf("-") + 1);
 }
