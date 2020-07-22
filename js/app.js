@@ -46,7 +46,7 @@ function resetValues() {
 startBtn.addEventListener("click", startGame);
 
 // Play AGain
-playAgain.addEventListener("click", startGame);
+playAgain.addEventListener("click", resetValues);
 
 // Close Prompt
 closeBtn.addEventListener("click", () => {
@@ -120,12 +120,10 @@ icons.forEach((icon) => {
       if (player1.value === "10") {
          document.querySelector("#winner-name").textContent = playerName.value;
          greet.style.display = "block";
-         resetValues();
       }
       if (player2.value === "10") {
          document.querySelector("#winner-name").textContent = "Computer";
          greet.style.display = "block";
-         resetValues();
       }
    });
 });
