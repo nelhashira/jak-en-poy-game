@@ -117,11 +117,17 @@ icons.forEach((icon) => {
       player1.textContent = myScore;
       player2.textContent = aiScore;
 
-      if (player1.textContent === "10") {
+      let title = document.querySelector("#greet-title");
+
+      if (player1.innerText == "10") {
+         title.textContent = "You Win";
+         title.style.color = "#2ecc71";
          document.querySelector("#winner-name").textContent = playerName.value;
          greet.style.display = "block";
       }
-      if (player2.textContent === "10") {
+      if (player2.innerText == "10") {
+         title.textContent = "You Lose";
+         title.style.color = "#e74c3c";
          document.querySelector("#winner-name").textContent = "Computer";
          greet.style.display = "block";
       }
